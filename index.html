@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>林星瑶 · 代码与星尘</title>
+  <!-- 柔和的风格，粉色调，女性化，计算机专业气质 -->
+  <!-- 使用Google Fonts添加优雅字体 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 免费图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(145deg, #fff9fb 0%, #fdedf2 100%);
+      font-family: 'Inter', 'Quicksand', sans-serif;
+      color: #3e2a3a;
+      line-height: 1.5;
+      min-height: 100vh;
+      padding: 2rem 1.5rem;
+    }
+
+    /* 主容器 — 柔软卡片层叠感 */
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* 顶部装饰线 — 极简小星星 */
+    .top-stars {
+      display: flex;
+      justify-content: center;
+      gap: 1.2rem;
+      font-size: 1.2rem;
+      color: #f9b8cf;
+      letter-spacing: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 卡片通用样式 — 圆润、毛玻璃、柔和阴影 */
+    .card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 42px;
+      box-shadow: 0 20px 40px -12px rgba(240, 150, 180, 0.25),
+      0 8px 24px -6px rgba(200, 120, 160, 0.15),
+      inset 0 1px 1px rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 230, 240, 0.7);
+      padding: 2rem 2.2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 30px 50px -18px #fbb0c0;
+      transform: translateY(-3px);
+    }
+
+    /* 个人资料头部 — 左右布局 */
+    .profile-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .avatar-frame {
+      flex-shrink: 0;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ffe5ef, #ffeef4);
+      padding: 6px;
+      box-shadow: 0 15px 25px -8px rgba(240, 140, 170, 0.4);
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid white;
+      background: #ffe2ed; /* 如果图片加载不出，显示纯色背景 */
+      display: block;
+    }
+
+    /* 为了展示方便，我们用纯色背景+文字代替头像，同时也很有风格 */
+    .avatar-placeholder {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: #ffe2ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      font-weight: 400;
+      color: #c28ba5;
+      border: 3px solid white;
+    }
+
+    .profile-info {
+      flex: 1;
+    }
+
+    .name-title {
+      margin-bottom: 1rem;
+    }
+
+    .name-title h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      font-family: 'Quicksand', sans-serif;
+      color: #3f2938;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .name-title .tagline {
+      font-size: 1.3rem;
+      font-weight: 350;
+      color: #b25f84;
+      margin-top: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tagline i {
+      font-size: 1.2rem;
+      color: #f59ab3;
+    }
+
+    /* 社交图标组 */
+    .social-links {
+      margin-top: 1.2rem;
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 30px;
+      background: rgba(255, 220, 235, 0.7);
+      color: #b9507a;
+      font-size: 1.6rem;
+      transition: all 0.2s;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: #fec8db;
+      color: #942f60;
+      transform: scale(1.1);
+    }
+
+    /* 小简介区域 */
+    .bio {
+      font-size: 1.1rem;
+      background: rgba(255, 240, 245, 0.7);
+      border-radius: 32px;
+      padding: 1.5rem 2rem;
+      border: 1px solid #ffe2ed;
+      margin-top: 0.8rem;
+    }
+
+    .bio i {
+      color: #ed9eb6;
+      margin-right: 6px;
+    }
+
+    .highlight {
+      background: #ffdee9;
+      border-radius: 20px;
+      padding: 0.15rem 0.9rem;
+      font-weight: 500;
+      color: #a03e62;
+      display: inline-block;
+    }
+
+    /* 技能气泡 */
+    .skills-section {
+      margin-top: 1rem;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.7rem;
+      font-weight: 500;
+      font-family: 'Quicksand', sans-serif;
+      color: #562d46;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-label i {
+      font-size: 2rem;
+      color: #f69abf;
+    }
+
+    .skill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.2rem;
+    }
+
+    .skill-item {
+      background: white;
+      padding: 0.5rem 1.4rem;
+      border-radius: 60px;
+      font-size: 1.1rem;
+      font-weight: 450;
+      box-shadow: 0 6px 12px rgba(250, 190, 210, 0.3);
+      border: 1px solid rgba(255, 210, 225, 0.8);
+      color: #572d48;
+      transition: 0.15s;
+      backdrop-filter: blur(4px);
+    }
+
+    .skill-item i {
+      margin-right: 8px;
+      color: #dc7fa5;
+      font-size: 1rem;
+    }
+
+    .skill-item:hover {
+      background: #ffe2ef;
+      border-color: #f5b0c8;
+    }
+
+    /* 项目卡片网格 */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1rem;
+    }
+
+    .project-card {
+      background: rgba(255, 250, 250, 0.7);
+      backdrop-filter: blur(4px);
+      border-radius: 32px;
+      padding: 1.8rem 1.5rem;
+      border: 1px solid rgba(255, 200, 220, 0.6);
+      transition: all 0.2s;
+      box-shadow: 0 10px 20px -10px #fccfdd;
+    }
+
+    .project-card:hover {
+      background: #ffeef5;
+      border-color: #ffb6d1;
+    }
+
+    .project-icon {
+      font-size: 2.2rem;
+      color: #c95f89;
+      margin-bottom: 0.8rem;
+    }
+
+    .project-title {
+      font-size: 1.5rem;
+      font-weight: 550;
+      color: #3b2634;
+      margin-bottom: 0.5rem;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    .project-desc {
+      color: #674359;
+      margin: 0.8rem 0 1.2rem;
+      font-size: 0.98rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 0.7rem;
+    }
+
+    .project-tags span {
+      background: #ffe1ed;
+      border-radius: 30px;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #9e4368;
+      border: 1px solid #fbb8d2;
+    }
+
+    .project-link {
+      margin-top: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ba5680;
+      text-decoration: none;
+      font-weight: 550;
+      border-bottom: 2px dotted #f5b0c8;
+      padding-bottom: 2px;
+    }
+
+    .project-link i {
+      font-size: 0.9rem;
+      transition: transform 0.15s;
+    }
+
+    .project-link:hover {
+      color: #8f3860;
+    }
+    .project-link:hover i {
+      transform: translateX(5px);
+    }
+
+    /* 个人风采 — 小兴趣&格言 */
+    .vibes-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .quote-card {
+      flex: 2;
+      min-width: 240px;
+      background: #ffeef4;
+      border-radius: 38px;
+      padding: 1.5rem 2rem;
+      border: 1px solid #ffdae7;
+      font-style: italic;
+      font-size: 1.3rem;
+      font-weight: 350;
+      color: #4f2d43;
+      box-shadow: inset 0 -2px 5px rgba(255, 225, 240, 0.6);
+    }
+
+    .quote-card i {
+      color: #f596b6;
+      margin-right: 0.8rem;
+      font-size: 1.8rem;
+      vertical-align: middle;
+    }
+
+    .interests {
+      flex: 1;
+      min-width: 180px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .interest-item {
+      background: white;
+      border-radius: 40px;
+      padding: 0.8rem 1.4rem;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border: 1px solid #ffcedf;
+    }
+
+    .interest-item i {
+      font-size: 1.5rem;
+      color: #db789e;
+      width: 1.8rem;
+    }
+
+    /* footer */
+    .footer-note {
+      text-align: center;
+      color: #ac7f96;
+      font-size: 0.95rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .footer-note i {
+      color: #f49ec0;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ffbfd5, #feb0c9, #ffbfd5, transparent);
+      margin: 0.8rem 0;
+      opacity: 0.4;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 650px) {
+      .profile-row {
+        justify-content: center;
+        text-align: center;
+      }
+      .profile-info {
+        text-align: center;
+      }
+      .social-links {
+        justify-content: center;
+      }
+      .name-title h1 {
+        font-size: 2.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="top-stars">
+  <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i>
+  <i class="fa-regular fa-moon"></i>
+  <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i>
+</div>
+
+<div class="wrapper">
+  <!-- 主要个人信息卡片 -->
+  <div class="card">
+    <div class="profile-row">
+      <div class="avatar-frame">
+        <!-- 如果没有真实头像，用一个可爱的文字头像代替 (女生/计算机相关) 也可替换为真实的图片 -->
+        <div class="avatar-placeholder">
+          <span>👩🏻‍💻</span>
+        </div>
+        <!-- 如果要用真实头像，替换上面div为 <img src="your-photo.jpg" alt="Stella"> -->
+      </div>
+      <div class="profile-info">
+        <div class="name-title">
+          <h1>jadelotus · Stella</h1>
+          <div class="tagline">
+            <i class="fa-regular fa-heart"></i> 计算机专业 · 大三
+            <span class="highlight"><i class="fa-regular fa-keyboard"></i> 全栈向 &  AI curious</span>
+          </div>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="bio">
+      <i class="fa-regular fa-message"></i> 捕捉逻辑里的浪漫，用代码绘制温柔的数据结构。
+      热爱开源、女性开发者社区，相信技术能带来柔软而坚韧的改变。
+      目前专攻 <strong>分布式系统 · 计算机图形学 · 人工智能</strong>，偶尔写写技术博客和小诗。
+    </div>
+  </div>
+
+  <!-- 技能区域卡片 -->
+  <div class="card">
+    <div class="section-label">
+      <i class="fa-regular fa-star"></i>
+      <span>技能星云 · 工具箱</span>
+    </div>
+    <div class="skill-cloud">
+      <span class="skill-item"><i class="fa-brands fa-python"></i> Python</span>
+      <span class="skill-item"><i class="fa-brands fa-java"></i> Java</span>
+      <span class="skill-item"><i class="fa-brands fa-js"></i> JavaScript/TS</span>
+      <span class="skill-item"><i class="fa-brands fa-react"></i> React</span>
+      <span class="skill-item"><i class="fa-brands fa-node"></i> Node.js</span>
+      <span class="skill-item"><i class="fa-solid fa-code"></i> C/C++</span>
+      <span class="skill-item"><i class="fa-solid fa-database"></i> SQL · MongoDB</span>
+      <span class="skill-item"><i class="fa-regular fa-file-code"></i> HTML/CSS</span>
+      <span class="skill-item"><i class="fa-brands fa-git-alt"></i> Git & CI/CD</span>
+      <span class="skill-item"><i class="fa-solid fa-cloud"></i> Docker · K8s</span>
+      <span class="skill-item"><i class="fa-regular fa-lightbulb"></i> PyTorch</span>
+      <span class="skill-item"><i class="fa-solid fa-shapes"></i> OpenGL</span>
+    </div>
+    <!-- 加点小细节 -->
+    <div style="margin-top: 1.2rem; font-size: 0.95rem; color:#b15f86">
+      <i class="fa-regular fa-laptop-code"></i> 日常使用 Neovim + 软萌配色的终端 · 喜欢给代码加上好看的注释
+    </div>
+  </div>
+
+  <!-- 项目精选卡片 -->
+  <div class="card">
+    <div class="section-label">
+      <i class="fa-regular fa-folder-open"></i>
+      <span>闪光项目 · 造些小玩意儿</span>
+    </div>
+    <div class="projects-grid">
+      <!-- 项目1 -->
+      <div class="project-card">
+        <div class="project-icon"><i class="fa-regular fa-snowflake"></i></div>
+        <div class="project-title">Petals 分布式框架</div>
+        <div class="project-desc">轻量级边缘计算调度器，让IoT设备像花瓣一样协作。基于gRPC + 一致性哈希。</div>
+        <div class="project-tags">
+          <span>Go</span><span>gRPC</span><span>分布式</span>
+        </div>
+        <a href="#" class="project-link">了解更多 <i class="fa-regular fa-arrow-right"></i></a>
+      </div>
+      <!-- 项目2 -->
+      <div class="project-card">
+        <div class="project-icon"><i class="fa-regular fa-image"></i></div>
+        <div class="project-title">Pastel Raytracer</div>
+        <div class="project-desc">一个用C++写的软渲染器，实现了软阴影、雾面反射，输出马卡龙色系的图片。</div>
+        <div class="project-tags">
+          <span>C++17</span><span>CMake</span><span>图形学</span>
+        </div>
+        <a href="#" class="project-link">看看渲染 <i class="fa-regular fa-arrow-right"></i></a>
+      </div>
+      <!-- 项目3 -->
+      <div class="project-card">
+        <div class="project-icon"><i class="fa-regular fa-comment-dots"></i></div>
+        <div class="project-title">Nova · 女性技术社区</div>
+        <div class="project-desc">发起的一个小程序 + 社群平台，连接计算机专业的女生，每周技术分享与 mentorship。</div>
+        <div class="project-tags">
+          <span>Vue</span><span>Flask</span><span>MongoDB</span>
+        </div>
+        <a href="#" class="project-link">加入社区 <i class="fa-regular fa-arrow-right"></i></a>
+      </div>
+      <!-- 项目4 -->
+      <div class="project-card">
+        <div class="project-icon"><i class="fa-regular fa-face-smile"></i></div>
+        <div class="project-title">emoji 提交助手</div>
+        <div class="project-desc">git commit 命令行工具，用 emoji 和可爱文案生成规范提交信息，开源以来被500+开发者使用。</div>
+        <div class="project-tags">
+          <span>TypeScript</span><span>CLI</span><span>npm</span>
+        </div>
+        <a href="#" class="project-link">try it <i class="fa-regular fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 个人风采小趣味 + 一句话 -->
+  <div class="card" style="padding: 1.8rem 2rem;">
+    <div class="vibes-section">
+      <div class="quote-card">
+        <i class="fa-regular fa-quote-right"></i> 在0和1的世界里，种出粉色的花。
+        <span style="display:block; margin-top: 0.5rem; font-size:1rem; color:#9f6d89;">—— 每天都要写点让未来的自己惊喜的代码 ✨</span>
+      </div>
+      <div class="interests">
+        <div class="interest-item"><i class="fa-regular fa-cat"></i> 两只猫: 年糕 & 汤圆</div>
+        <div class="interest-item"><i class="fa-regular fa-cup-straw"></i> 芋泥波波 / 手冲咖啡</div>
+        <div class="interest-item"><i class="fa-regular fa-paintbrush"></i> 水彩插画</div>
+        <div class="interest-item"><i class="fa-regular fa-record-vinyl"></i> 盯鞋/梦幻流行</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 最新足迹 / 即刻动态 卡片 极简-->
+  <div class="card" style="padding: 1.4rem 2rem;">
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+      <span><i class="fa-regular fa-pen-to-square" style="color: #dc7fa5;"></i> 最近在折腾: 搭建个人AI知识库 · 学习glsl shader </span>
+      <span><i class="fa-regular fa-calendar-check" style="color: #dc7fa5;"></i> 计划参加: Grace Hopper Celebration 2025</span>
+      <span><i class="fa-regular fa-blog" style="color: #dc7fa5;"></i> 最新博客: 《在调试中保持平静的艺术》</span>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div class="footer-note">
+    <span><i class="fa-regular fa-copyright"></i> 2025 林星瑶 · 用💖和代码编织</span>
+    <span>·</span>
+    <span><i class="fa-regular fa-map-pin"></i> 基于 GitHub Pages  ·  design with pastel</span>
+  </div>
+  <hr>
+  <div style="text-align: center; font-size: 0.85rem; color: #bba0b0;">
+    <i class="fa-regular fa-sparkles"></i> 本站源码可可爱爱 · 欢迎 star  <i class="fa-regular fa-sparkles"></i>
+  </div>
+</div>
+</body>
+</html>
