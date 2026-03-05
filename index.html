@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>shiyuhe</title>
-  <!-- 柔和的风格，粉色调，女性化，计算机专业气质 -->
-  <!-- 使用Google Fonts添加优雅字体 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <!-- Font Awesome 6 免费图标库 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <title>史钰荷 · 个人学术主页</title>
+  <!-- 使用简单干净的字体系统 -->
   <style>
     * {
       margin: 0;
@@ -19,567 +13,570 @@
     }
 
     body {
-      background: linear-gradient(145deg, #fff9fb 0%, #fdedf2 100%);
-      font-family: 'Inter', 'Quicksand', sans-serif;
-      color: #3e2a3a;
-      line-height: 1.5;
-      min-height: 100vh;
-      padding: 2rem 1.5rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f5f7fa;
+      color: #1e2b3c;
+      line-height: 1.6;
+      padding: 2rem 1rem;
     }
 
-    /* 主容器 — 柔软卡片层叠感 */
-    .wrapper {
+    .container {
       max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px -10px rgba(0,20,30,0.15);
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      overflow: hidden;
     }
 
-    /* 顶部装饰线 — 极简小星星 */
-    .top-stars {
-      display: flex;
-      justify-content: center;
-      gap: 1.2rem;
-      font-size: 1.2rem;
-      color: #f9b8cf;
-      letter-spacing: 0.5rem;
-      margin-bottom: 0.5rem;
+    /* ===== 左侧卡片 ===== */
+    .sidebar {
+      background-color: #142b3c;      /* 深蓝灰色，沉稳学术感 */
+      color: #e7edf3;
+      padding: 2rem 1.8rem;
     }
 
-    /* 卡片通用样式 — 圆润、毛玻璃、柔和阴影 */
-    .card {
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 42px;
-      box-shadow: 0 20px 40px -12px rgba(240, 150, 180, 0.25),
-      0 8px 24px -6px rgba(200, 120, 160, 0.15),
-      inset 0 1px 1px rgba(255, 255, 255, 0.6);
-      border: 1px solid rgba(255, 230, 240, 0.7);
-      padding: 2rem 2.2rem;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    .profile-header {
+      text-align: left;
+      margin-bottom: 2rem;
     }
 
-    .card:hover {
-      box-shadow: 0 30px 50px -18px #fbb0c0;
-      transform: translateY(-3px);
-    }
-
-    /* 个人资料头部 — 左右布局 */
-    .profile-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2.5rem;
-      align-items: center;
-    }
-
-    .avatar-frame {
-      flex-shrink: 0;
-      width: 160px;
-      height: 160px;
+    .avatar {
+      width: 130px;
+      height: 130px;
+      background: linear-gradient(145deg, #3a5f73, #1d3e52);
       border-radius: 50%;
-      background: linear-gradient(135deg, #ffe5ef, #ffeef4);
-      padding: 6px;
-      box-shadow: 0 15px 25px -8px rgba(240, 140, 170, 0.4);
-    }
-
-    .avatar-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid white;
-      background: #ffe2ed; /* 如果图片加载不出，显示纯色背景 */
-      display: block;
-    }
-
-    /* 为了展示方便，我们用纯色背景+文字代替头像，同时也很有风格 */
-    .avatar-placeholder {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #ffe2ed;
+      margin-bottom: 1.5rem;
+      border: 3px solid #8aaec0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3.5rem;
-      font-weight: 400;
-      color: #c28ba5;
-      border: 3px solid white;
+      font-size: 3rem;
+      font-weight: 300;
+      color: #c0dae9;
+    }
+    /* 如果没有头像，用 initials 代替 */
+    .avatar span {
+      opacity: 0.9;
     }
 
-    .profile-info {
-      flex: 1;
-    }
-
-    .name-title {
-      margin-bottom: 1rem;
-    }
-
-    .name-title h1 {
-      font-size: 2.8rem;
+    .sidebar h1 {
+      font-size: 2rem;
       font-weight: 600;
-      font-family: 'Quicksand', sans-serif;
-      color: #3f2938;
-      letter-spacing: -0.01em;
+      letter-spacing: 1px;
+      color: white;
+      margin-bottom: 0.25rem;
       line-height: 1.2;
     }
 
-    .name-title .tagline {
-      font-size: 1.3rem;
-      font-weight: 350;
-      color: #b25f84;
-      margin-top: 0.2rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
+    .sidebar .subtitle {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #b3cdde;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px solid #2e4b5f;
+      padding-bottom: 1rem;
     }
 
-    .tagline i {
+    .info-block {
+      margin: 1.8rem 0;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+      color: #d3e2ec;
+    }
+
+    .info-item .emoji {
       font-size: 1.2rem;
-      color: #f59ab3;
+      min-width: 1.8rem;
+      color: #9fc6dd;
     }
 
-    /* 社交图标组 */
+    .info-item a {
+      color: #d3e2ec;
+      text-decoration: none;
+      border-bottom: 1px dotted #6f95ab;
+    }
+
+    .info-item a:hover {
+      color: white;
+      border-bottom: 1px solid white;
+    }
+
     .social-links {
-      margin-top: 1.2rem;
       display: flex;
-      gap: 1.2rem;
       flex-wrap: wrap;
+      gap: 0.6rem 1rem;
+      margin: 1.5rem 0 1.2rem;
     }
 
     .social-links a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 44px;
-      height: 44px;
-      border-radius: 30px;
-      background: rgba(255, 220, 235, 0.7);
-      color: #b9507a;
-      font-size: 1.6rem;
-      transition: all 0.2s;
-      border: 1px solid rgba(255, 255, 255, 0.6);
+      color: #c8deec;
       text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      background: #1e3f52;
+      padding: 0.2rem 0.9rem;
+      border-radius: 20px;
+      transition: 0.2s;
+      border: 1px solid #386277;
     }
 
     .social-links a:hover {
-      background: #fec8db;
-      color: #942f60;
-      transform: scale(1.1);
+      background: #2d5b77;
+      color: white;
+      border-color: #7aaec9;
     }
 
-    /* 小简介区域 */
-    .bio {
-      font-size: 1.1rem;
-      background: rgba(255, 240, 245, 0.7);
-      border-radius: 32px;
-      padding: 1.5rem 2rem;
-      border: 1px solid #ffe2ed;
-      margin-top: 0.8rem;
+    .highlight-card {
+      background: #1a3343;
+      border-radius: 18px;
+      padding: 1.3rem;
+      margin-top: 2rem;
+      border-left: 5px solid #7faec6;
     }
 
-    .bio i {
-      color: #ed9eb6;
-      margin-right: 6px;
+    .highlight-card p {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      display: flex;
+      gap: 0.7rem;
+      color: #e0edf5;
     }
 
-    .highlight {
-      background: #ffdee9;
-      border-radius: 20px;
-      padding: 0.15rem 0.9rem;
+    .badge {
+      background: #2b4d61;
+      border-radius: 40px;
+      padding: 0.25rem 0.9rem;
+      font-size: 0.8rem;
       font-weight: 500;
-      color: #a03e62;
+      color: #e0f0fa;
       display: inline-block;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
     }
 
-    /* 技能气泡 */
-    .skills-section {
-      margin-top: 1rem;
+    /* ===== 右侧内容 ===== */
+    .main {
+      background: white;
+      padding: 2.5rem 2.5rem 2.5rem 2.2rem;
     }
 
-    .section-label {
+    .section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #0e2a38;
+      border-bottom: 3px solid #d2e5f0;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-size: 1.7rem;
+      gap: 0.6rem;
+    }
+
+    .section h2 span {
+      font-size: 1.8rem;
+    }
+
+    .about-text {
+      font-size: 1rem;
+      color: #2a3e4c;
+      background: #f8fbfe;
+      padding: 1.5rem;
+      border-radius: 20px;
+      border: 1px solid #e2ecf3;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+    }
+
+    .vision-quote {
+      font-style: italic;
+      border-left: 5px solid #407494;
+      background: #e4f0f8;
+      padding: 1rem 1.5rem;
+      border-radius: 0 40px 40px 0;
+      margin: 1.5rem 0 0;
+      font-weight: 450;
+      color: #113946;
+    }
+
+    /* 座右铭特殊样式 */
+    .motto-quote {
+      font-style: italic;
+      background: #f0f1e6;
+      padding: 1rem 1.8rem;
+      border-radius: 60px 20px 60px 20px;
+      border: 2px solid #b5aa8d;
+      color: #2d3e36;
+      font-size: 1.2rem;
+      text-align: center;
+      margin: 1.2rem 0;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.02);
+      font-weight: 460;
+      letter-spacing: 1px;
+    }
+
+    .motto-quote .author {
+      font-size: 0.9rem;
+      color: #6b5e4a;
+      margin-top: 0.3rem;
+    }
+
+    /* 表格样式 (教育/荣誉) */
+    .edu-table, .honor-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .edu-table tr, .honor-table tr {
+      border-bottom: 1px solid #e0eef5;
+    }
+
+    .edu-table td, .honor-table td {
+      padding: 0.8rem 0.3rem 0.8rem 0;
+      vertical-align: top;
+    }
+
+    .edu-table td:first-child, .honor-table td:first-child {
       font-weight: 500;
-      font-family: 'Quicksand', sans-serif;
-      color: #562d46;
-      margin-bottom: 1.5rem;
+      color: #1a4d62;
+      width: 120px;
     }
 
-    .section-label i {
-      font-size: 2rem;
-      color: #f69abf;
+    .honor-table td:first-child {
+      width: 100px;
     }
 
-    .skill-cloud {
+    .honor-table td:nth-child(2) {
+      font-weight: 500;
+    }
+
+    .paper-item {
+      margin-bottom: 1.8rem;
+    }
+
+    .paper-title {
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: #103544;
+    }
+
+    .paper-authors {
+      font-size: 0.93rem;
+      color: #2f5b70;
+      margin: 0.2rem 0 0.2rem;
+    }
+
+    .paper-venue {
+      font-size: 0.9rem;
+      color: #607d8b;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .tag-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.8rem 1.2rem;
+      gap: 0.5rem;
+      margin: 1rem 0 0.5rem;
     }
 
-    .skill-item {
-      background: white;
-      padding: 0.5rem 1.4rem;
-      border-radius: 60px;
-      font-size: 1.1rem;
-      font-weight: 450;
-      box-shadow: 0 6px 12px rgba(250, 190, 210, 0.3);
-      border: 1px solid rgba(255, 210, 225, 0.8);
-      color: #572d48;
-      transition: 0.15s;
-      backdrop-filter: blur(4px);
+    .tag {
+      background: #e3f0f8;
+      color: #144a62;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      border: 1px solid #bdd8e9;
     }
 
-    .skill-item i {
-      margin-right: 8px;
-      color: #dc7fa5;
-      font-size: 1rem;
-    }
-
-    .skill-item:hover {
-      background: #ffe2ef;
-      border-color: #f5b0c8;
-    }
-
-    /* 项目卡片网格 */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.8rem;
-      margin-top: 1rem;
-    }
-
-    .project-card {
-      background: rgba(255, 250, 250, 0.7);
-      backdrop-filter: blur(4px);
-      border-radius: 32px;
-      padding: 1.8rem 1.5rem;
-      border: 1px solid rgba(255, 200, 220, 0.6);
-      transition: all 0.2s;
-      box-shadow: 0 10px 20px -10px #fccfdd;
-    }
-
-    .project-card:hover {
-      background: #ffeef5;
-      border-color: #ffb6d1;
-    }
-
-    .project-icon {
-      font-size: 2.2rem;
-      color: #c95f89;
-      margin-bottom: 0.8rem;
+    .project-block {
+      background: #f6fbfe;
+      border-radius: 18px;
+      padding: 1.3rem 1.5rem;
+      margin: 1.2rem 0;
+      border: 1px solid #d2e5f0;
     }
 
     .project-title {
-      font-size: 1.5rem;
-      font-weight: 550;
-      color: #3b2634;
-      margin-bottom: 0.5rem;
-      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #083344;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
     }
 
     .project-desc {
-      color: #674359;
-      margin: 0.8rem 0 1.2rem;
-      font-size: 0.98rem;
+      margin-top: 0.5rem;
+      color: #2c4758;
     }
 
-    .project-tags {
+    .art-showcase {
       display: flex;
-      flex-wrap: wrap;
-      gap: 0.4rem 0.7rem;
-    }
-
-    .project-tags span {
-      background: #ffe1ed;
-      border-radius: 30px;
-      padding: 0.2rem 1rem;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #9e4368;
-      border: 1px solid #fbb8d2;
-    }
-
-    .project-link {
-      margin-top: 1.2rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #ba5680;
-      text-decoration: none;
-      font-weight: 550;
-      border-bottom: 2px dotted #f5b0c8;
-      padding-bottom: 2px;
-    }
-
-    .project-link i {
-      font-size: 0.9rem;
-      transition: transform 0.15s;
-    }
-
-    .project-link:hover {
-      color: #8f3860;
-    }
-    .project-link:hover i {
-      transform: translateX(5px);
-    }
-
-    /* 个人风采 — 小兴趣&格言 */
-    .vibes-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .quote-card {
-      flex: 2;
-      min-width: 240px;
-      background: #ffeef4;
-      border-radius: 38px;
-      padding: 1.5rem 2rem;
-      border: 1px solid #ffdae7;
-      font-style: italic;
-      font-size: 1.3rem;
-      font-weight: 350;
-      color: #4f2d43;
-      box-shadow: inset 0 -2px 5px rgba(255, 225, 240, 0.6);
-    }
-
-    .quote-card i {
-      color: #f596b6;
-      margin-right: 0.8rem;
-      font-size: 1.8rem;
-      vertical-align: middle;
-    }
-
-    .interests {
-      flex: 1;
-      min-width: 180px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .interest-item {
-      background: white;
-      border-radius: 40px;
-      padding: 0.8rem 1.4rem;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border: 1px solid #ffcedf;
-    }
-
-    .interest-item i {
-      font-size: 1.5rem;
-      color: #db789e;
-      width: 1.8rem;
-    }
-
-    /* footer */
-    .footer-note {
-      text-align: center;
-      color: #ac7f96;
-      font-size: 0.95rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
       gap: 1rem;
       flex-wrap: wrap;
-      margin-top: 0.5rem;
+      margin-top: 1rem;
     }
 
-    .footer-note i {
-      color: #f49ec0;
+    .art-card {
+      background: #f2f6f9;
+      border-radius: 18px;
+      padding: 1rem 1.2rem;
+      flex: 1 1 160px;
+      border: 1px dashed #7fa3b9;
+      color: #1a445b;
+      font-weight: 450;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .art-emoji {
+      font-size: 2.6rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.8rem 1.2rem;
+      margin-top: 1rem;
+    }
+
+    .skill-cat {
+      font-weight: 600;
+      color: #1d4b60;
+      margin-top: 0.5rem;
+      grid-column: 1 / -1;
+    }
+
+    .advisor-box {
+      background: #eff6fa;
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .advisor-name {
+      font-weight: 600;
+      color: #003049;
+    }
+
+    .no-accept {
+      color: #a03d3d;
+      background: #ffeaea;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
     }
 
     hr {
       border: none;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #ffbfd5, #feb0c9, #ffbfd5, transparent);
-      margin: 0.8rem 0;
-      opacity: 0.4;
+      border-top: 2px dashed #c4dae8;
+      margin: 1.8rem 0;
     }
 
-    /* 响应式微调 */
-    @media (max-width: 650px) {
-      .profile-row {
-        justify-content: center;
-        text-align: center;
-      }
-      .profile-info {
-        text-align: center;
-      }
-      .social-links {
-        justify-content: center;
-      }
-      .name-title h1 {
-        font-size: 2.3rem;
+    /* 响应式 */
+    @media (max-width: 800px) {
+      .container {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-<div class="top-stars">
-  <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i>
-  <i class="fa-regular fa-moon"></i>
-  <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i> <i class="fa-regular fa-star"></i>
-</div>
-
-<div class="wrapper">
-  <!-- 主要个人信息卡片 -->
-  <div class="card">
-    <div class="profile-row">
-      <div class="avatar-frame">
-        <!-- 如果没有真实头像，用一个可爱的文字头像代替 (女生/计算机相关) 也可替换为真实的图片 -->
-        <div class="avatar-placeholder">
-          <span>👩🏻‍💻</span>
-        </div>
-        <!-- 如果要用真实头像，替换上面div为 <img src="your-photo.jpg" alt="Stella"> -->
+<div class="container">
+  <!-- 左侧边栏 / 卡片 -->
+  <aside class="sidebar">
+    <div class="profile-header">
+      <div class="avatar">
+        <span>📘</span>
       </div>
-      <div class="profile-info">
-        <div class="name-title">
-          <h1>jadelotus · Stella</h1>
-          <div class="tagline">
-            <i class="fa-regular fa-heart"></i> 计算机专业 · 大三
-            <span class="highlight"><i class="fa-regular fa-keyboard"></i> 全栈向 &  AI curious</span>
+      <h1>史钰荷</h1>
+      <div class="subtitle">软件工程 · 本科 · 科研萌新</div>
+    </div>
+
+    <div class="info-block">
+      <div class="info-item"><span class="emoji">🏫</span> 海南大学 计算机科学与技术学院</div>
+      <div class="info-item"><span class="emoji">📚</span> 乘风书院 | 软件工程NIIT 2023级</div>
+      <div class="info-item"><span class="emoji">📍</span> 中国 · 海口</div>
+      <div class="info-item"><span class="emoji">📧</span> <a href="mailto:1771526644@qq.com">1771526644@qq.com</a></div>
+      <div class="info-item"><span class="emoji">📱</span> 18062127802</div>
+      <div class="info-item"><span class="emoji">🎓</span> 学号 20233005452</div>
+    </div>
+
+    <div class="social-links">
+      <a href="#">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Twitter</a>
+      <a href="#">ORCID</a>
+      <a href="#">小红书</a>
+      <a href="#">B站</a>
+    </div>
+
+    <div class="highlight-card">
+      <p><span>📊</span> GPA: 3.61/4.0 · 排名 17/177 (前10%)</p>
+      <p><span>📝</span> CET-4: 571 · CET-6: 458</p>
+      <p><span>🏆</span> 综合二等奖学金、三等奖学金</p>
+      <p><span>🧪</span> 第一作者论文 (IIP&A) · CCF-C 大模型综述</p>
+    </div>
+
+    <div style="margin-top: 1.5rem; font-size: 0.9rem; color: #aac5d7;">
+      <span class="badge">Python</span>
+      <span class="badge">PyTorch</span>
+      <span class="badge">深度聚类</span>
+      <span class="badge">对比学习</span>
+      <span class="badge">科研绘图</span>
+      <span class="badge">AI4Science</span>
+    </div>
+  </aside>
+
+  <!-- 右侧主要内容 -->
+  <main class="main">
+    <!-- 关于我 板块 (含座右铭) -->
+    <section class="section">
+      <h2><span>🧑‍🎓</span> 关于我</h2>
+      <div class="about-text">
+        <p>我是史钰荷，海南大学计算机科学与技术学院软件工程专业本科生。致力于人工智能与网络安全的交叉研究。我性格沉稳专注，善于快速学习新知识并融会贯通，这份特质让我在科研探索中不断突破。</p>
+
+        <!-- 新加的座右铭 (出淤泥而不染) -->
+        <div class="motto-quote">
+          🌿 出淤泥而不染，濯清涟而不妖 🌿
+          <div class="author">—— 周敦颐 · 《爱莲说》</div>
+        </div>
+
+        <div class="vision-quote">
+          🎯 用严谨的代码和清晰的图表，构建可解释、可信赖的AI系统，让技术在真实世界中产生价值。
+        </div>
+      </div>
+    </section>
+
+    <!-- 教育经历 -->
+    <section class="section">
+      <h2><span>📖</span> 教育经历</h2>
+      <table class="edu-table">
+        <tr><td>2023.09 – 至今</td><td><strong>海南大学</strong> · 软件工程NIIT (本科) </td></tr>
+        <tr><td>2020.09 – 2023.06</td><td><strong>海南中学</strong> · 高中</td></tr>
+      </table>
+    </section>
+
+    <!-- 研究兴趣 (简洁) -->
+    <section class="section">
+      <h2><span>🔬</span> 研究兴趣</h2>
+      <div class="tag-list">
+        <span class="tag">🤖 人工智能 · 网络安全</span>
+        <span class="tag">🧬 深度无监督学习</span>
+        <span class="tag">⚖️ 对比学习</span>
+        <span class="tag">🌐 大模型进展</span>
+        <span class="tag">📊 AI4Science</span>
+      </div>
+    </section>
+
+    <!-- 出版物 -->
+    <section class="section">
+      <h2><span>📄</span> 出版物</h2>
+      <div class="paper-item">
+        <div class="paper-title">Deep unsupervised clustering model with contrastive learning for network intrusion detection</div>
+        <div class="paper-authors"><strong>史钰荷</strong> (第一作者) , 程杰仁等</div>
+        <div class="paper-venue">📌 IIP&A 期刊 · 2025</div>
+      </div>
+      <div class="paper-item">
+        <div class="paper-title">A new study of the progress of large models</div>
+
+        <div class="paper-venue">📌 CCF-C类会议 · 2024</div>
+      </div>
+    </section>
+
+    <!-- 竞赛与荣誉 -->
+    <section class="section">
+      <h2><span>🏅</span> 竞赛与荣誉</h2>
+      <table class="honor-table">
+        <tr><td>2025</td><td>第七届全球校园人工智能算法精英大赛 全国总决赛优秀奖 (第1顺序)</td><td>国家级</td></tr>
+        <tr><td>2024</td><td>中国高校计算机大赛—人工智能创意赛 二等奖</td><td>国家级</td></tr>
+        <tr><td>2024</td><td>综合二等奖学金</td><td>校级</td></tr>
+        <tr><td>2023</td><td>综合三等奖学金</td><td>校级</td></tr>
+      </table>
+    </section>
+
+    <!-- 项目经历 -->
+    <section class="section">
+      <h2><span>💻</span> 项目经历</h2>
+      <div class="project-block">
+        <div class="project-title">🔹 基于对比学习的无监督网络入侵检测系统 <span style="font-size:0.8rem; background: #e3eff8; padding:0.2rem 0.8rem; border-radius:30px;">2024-2025</span></div>
+        <div class="project-desc">针对网络流量标记困难，设计结合对比学习和深度聚类的无监督模型；负责模型架构、实验及论文绘图。成果发表于 IIP&A。</div>
+      </div>
+      <div class="project-block">
+        <div class="project-title">🔹 大模型进展综述研究 <span style="font-size:0.8rem; background: #e3eff8; padding:0.2rem 0.8rem; border-radius:30px;">2024</span></div>
+        <div class="project-desc">系统梳理LLM关键技术突破，参与文献调研、分析与撰写，论文发表于CCF-C类会议。</div>
+      </div>
+    </section>
+
+    <!-- 个人特色：科研+绘画 -->
+    <section class="section">
+      <h2><span>🎨</span> 当科研遇上绘画</h2>
+      <p style="margin-bottom: 1rem; background: #f1f8fd; padding: 0.8rem 1.2rem; border-radius: 40px;">“好的科研不仅需要严谨的逻辑，也需要清晰的表达。绘画是我将抽象概念转化为直观视觉的语言。”</p>
+      <div class="art-showcase">
+        <div class="art-card"><span class="art-emoji">🖼️</span> 模型架构图</div>
+        <div class="art-card"><span class="art-emoji">📊</span> 算法流程图</div>
+        <div class="art-card"><span class="art-emoji">🤖</span> AI概念图解</div>
+        <div class="art-card"><span class="art-emoji">✏️</span> 技术手绘</div>
+      </div>
+      <p style="margin-top: 1rem; font-size:0.95rem"><em>⭐ 定期分享科研插图、可视化笔记 —— 让论文更生动。</em></p>
+    </section>
+
+    <!-- 技能标签 + 意向导师（修改后符合要求） -->
+    <section class="section">
+      <h2><span>🧰</span> 技能与意向</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 2rem;">
+        <div style="flex: 2; min-width: 220px;">
+          <div class="skill-cat">💡 编程 / 框架</div>
+          <div class="tag-list">
+            <span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span>
+            <span class="tag">PyTorch</span><span class="tag">TensorFlow</span>
+          </div>
+          <div class="skill-cat" style="margin-top: 0.8rem;">📐 科研/语言</div>
+          <div class="tag-list">
+            <span class="tag">论文写作</span><span class="tag">文献综述</span>
+            <span class="tag">模型设计</span><span class="tag">英语CET-6</span>
+            <span class="tag">科研绘图</span><span class="tag">图表设计</span>
           </div>
         </div>
-        <div class="social-links">
-          <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-          <a href="#" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-        </div>
-      </div>
-    </div>
-    <div class="bio">
-      <i class="fa-regular fa-message"></i> 捕捉逻辑里的浪漫，用代码绘制温柔的数据结构。
-      热爱开源、女性开发者社区，相信技术能带来柔软而坚韧的改变。
-      目前专攻 <strong>分布式系统 · 计算机图形学 · 人工智能</strong>，偶尔写写技术博客和小诗。
-    </div>
-  </div>
 
-  <!-- 技能区域卡片 -->
-  <div class="card">
-    <div class="section-label">
-      <i class="fa-regular fa-star"></i>
-      <span>技能星云 · 工具箱</span>
-    </div>
-    <div class="skill-cloud">
-      <span class="skill-item"><i class="fa-brands fa-python"></i> Python</span>
-      <span class="skill-item"><i class="fa-brands fa-java"></i> Java</span>
-      <span class="skill-item"><i class="fa-brands fa-js"></i> JavaScript/TS</span>
-      <span class="skill-item"><i class="fa-brands fa-react"></i> React</span>
-      <span class="skill-item"><i class="fa-brands fa-node"></i> Node.js</span>
-      <span class="skill-item"><i class="fa-solid fa-code"></i> C/C++</span>
-      <span class="skill-item"><i class="fa-solid fa-database"></i> SQL · MongoDB</span>
-      <span class="skill-item"><i class="fa-regular fa-file-code"></i> HTML/CSS</span>
-      <span class="skill-item"><i class="fa-brands fa-git-alt"></i> Git & CI/CD</span>
-      <span class="skill-item"><i class="fa-solid fa-cloud"></i> Docker · K8s</span>
-      <span class="skill-item"><i class="fa-regular fa-lightbulb"></i> PyTorch</span>
-      <span class="skill-item"><i class="fa-solid fa-shapes"></i> OpenGL</span>
-    </div>
-    <!-- 加点小细节 -->
-    <div style="margin-top: 1.2rem; font-size: 0.95rem; color:#b15f86">
-      <i class="fa-regular fa-laptop-code"></i> 日常使用 Neovim + 软萌配色的终端 · 喜欢给代码加上好看的注释
-    </div>
-  </div>
 
-  <!-- 项目精选卡片 -->
-  <div class="card">
-    <div class="section-label">
-      <i class="fa-regular fa-folder-open"></i>
-      <span>闪光项目 · 造些小玩意儿</span>
-    </div>
-    <div class="projects-grid">
-      <!-- 项目1 -->
-      <div class="project-card">
-        <div class="project-icon"><i class="fa-regular fa-snowflake"></i></div>
-        <div class="project-title">Petals 分布式框架</div>
-        <div class="project-desc">轻量级边缘计算调度器，让IoT设备像花瓣一样协作。基于gRPC + 一致性哈希。</div>
-        <div class="project-tags">
-          <span>Go</span><span>gRPC</span><span>分布式</span>
-        </div>
-        <a href="#" class="project-link">了解更多 <i class="fa-regular fa-arrow-right"></i></a>
       </div>
-      <!-- 项目2 -->
-      <div class="project-card">
-        <div class="project-icon"><i class="fa-regular fa-image"></i></div>
-        <div class="project-title">Pastel Raytracer</div>
-        <div class="project-desc">一个用C++写的软渲染器，实现了软阴影、雾面反射，输出马卡龙色系的图片。</div>
-        <div class="project-tags">
-          <span>C++17</span><span>CMake</span><span>图形学</span>
-        </div>
-        <a href="#" class="project-link">看看渲染 <i class="fa-regular fa-arrow-right"></i></a>
-      </div>
-      <!-- 项目3 -->
-      <div class="project-card">
-        <div class="project-icon"><i class="fa-regular fa-comment-dots"></i></div>
-        <div class="project-title">Nova · 女性技术社区</div>
-        <div class="project-desc">发起的一个小程序 + 社群平台，连接计算机专业的女生，每周技术分享与 mentorship。</div>
-        <div class="project-tags">
-          <span>Vue</span><span>Flask</span><span>MongoDB</span>
-        </div>
-        <a href="#" class="project-link">加入社区 <i class="fa-regular fa-arrow-right"></i></a>
-      </div>
-      <!-- 项目4 -->
-      <div class="project-card">
-        <div class="project-icon"><i class="fa-regular fa-face-smile"></i></div>
-        <div class="project-title">emoji 提交助手</div>
-        <div class="project-desc">git commit 命令行工具，用 emoji 和可爱文案生成规范提交信息，开源以来被500+开发者使用。</div>
-        <div class="project-tags">
-          <span>TypeScript</span><span>CLI</span><span>npm</span>
-        </div>
-        <a href="#" class="project-link">try it <i class="fa-regular fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- 个人风采小趣味 + 一句话 -->
-  <div class="card" style="padding: 1.8rem 2rem;">
-    <div class="vibes-section">
-      <div class="quote-card">
-        <i class="fa-regular fa-quote-right"></i> 在0和1的世界里，种出粉色的花。
-        <span style="display:block; margin-top: 0.5rem; font-size:1rem; color:#9f6d89;">—— 每天都要写点让未来的自己惊喜的代码 ✨</span>
-      </div>
-      <div class="interests">
-        <div class="interest-item"><i class="fa-regular fa-cat"></i> 两只猫: 年糕 & 汤圆</div>
-        <div class="interest-item"><i class="fa-regular fa-cup-straw"></i> 芋泥波波 / 手冲咖啡</div>
-        <div class="interest-item"><i class="fa-regular fa-paintbrush"></i> 水彩插画</div>
-        <div class="interest-item"><i class="fa-regular fa-record-vinyl"></i> 盯鞋/梦幻流行</div>
-      </div>
+    <!-- 分隔线 + 页脚 -->
+    <hr>
+    <div style="text-align: right; color: #7b9eb1; font-size: 0.85rem;">
+      史钰荷 · 更新于 2026 · 由你自己搭建和扩展 ✨
     </div>
-  </div>
+  </main>
+</div>
 
-  <!-- 最新足迹 / 即刻动态 卡片 极简-->
-  <div class="card" style="padding: 1.4rem 2rem;">
-    <div style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-      <span><i class="fa-regular fa-pen-to-square" style="color: #dc7fa5;"></i> 最近在折腾: 搭建个人AI知识库 · 学习glsl shader </span>
-      <span><i class="fa-regular fa-calendar-check" style="color: #dc7fa5;"></i> 计划参加: Grace Hopper Celebration 2025</span>
-      <span><i class="fa-regular fa-blog" style="color: #dc7fa5;"></i> 最新博客: 《在调试中保持平静的艺术》</span>
-    </div>
-  </div>
-
-  <!-- footer -->
-  <div class="footer-note">
-    <span><i class="fa-regular fa-copyright"></i> 2025</span>
-    <span>·</span>
-    <span><i class="fa-regular fa-map-pin"></i> 基于 GitHub Pages  ·  design with pastel</span>
-  </div>
-  <hr>
-  <div style="text-align: center; font-size: 0.85rem; color: #bba0b0;">
-    <i class="fa-regular fa-sparkles"></i> 本站源码可可爱爱 · 欢迎 star  <i class="fa-regular fa-sparkles"></i>
-  </div>
+<div style="max-width: 1200px; margin: 1rem auto 0; padding: 0 0.5rem; font-size: 0.8rem; color: #6f8a9c;">
+  💡 提示：左侧头像处的“📘”可换成你的真实照片（替换avatar div内的内容）。社交媒体链接请替换为真实地址。
 </div>
 </body>
 </html>
